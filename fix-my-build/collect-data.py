@@ -6,12 +6,13 @@ import os
 from time import sleep
 
 API_KEY = '4d8a0cc4-02c2-4132-bd49-2e21b79ee81a'
-BASE_URL = 'https://na.api.pvp.net'
+BASE_URL = 'https://{region}.api.pvp.net'
 
 @ratelim.patient(10, 10)
 @ratelim.greedy(500, 600)
 def get_match(region, id):
-    return requests.get(BASE_URL + "/api/lol/{region}/v2.2/match/{id}".format(region=region, id=id), params={"api_key": API_KEY, "includeTimeline": True})
+    return requests.get(BASE_URL.format(region=region) +
+                        "/api/lol/{region}/v2.2/match/{id}".format(region=region, id=id), params={"api_key": API_KEY, "includeTimeline": True})
 
 def load_data():
     ids = []
@@ -23,7 +24,7 @@ def load_data():
 
     return ids
 
-def download_match((region, id)):
+def download_match(region, id):
     print(region, id)
     with open('matches/{id}.json'.format(id=id), 'w') as outfile:
         match = get_match(region, id)
@@ -35,8 +36,8 @@ def download_match((region, id)):
 
 def download_all():
     matches = load_data()
-    start = matches.index(('br', 542567252))
-    matches = matches[start+1:]
-    map(download_match, matches)
+    for region, id in matches:
+        if not os.path.exists('matches/{id}.json'.format(id=id)):
+            download_match(region, id)
 
 download_all()
