@@ -1,0 +1,13 @@
+* Fix My Build!
+
+  Oh no! The items changed again! Is my build still good? What should
+  I change?
+
+  The objective here is to learn N = # of champions RBMs to predict,
+  given a build on the old item set, what one's new build should look
+  like.
+** Stage 1: Data Collection
+
+   I have a list of match IDs and need to collect match data. If
+   possible, I should collect all fields. Ideally later on I can
+   predict the most successful builds, but that is another task.
