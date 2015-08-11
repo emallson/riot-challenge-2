@@ -8,7 +8,7 @@ from time import sleep
 API_KEY = '4d8a0cc4-02c2-4132-bd49-2e21b79ee81a'
 BASE_URL = 'https://na.api.pvp.net'
 
-@ratelim.greedy(10, 10)
+@ratelim.patient(10, 10)
 @ratelim.greedy(500, 600)
 def get_match(region, id):
     return requests.get(BASE_URL + "/api/lol/{region}/v2.2/match/{id}".format(region=region, id=id), params={"api_key": API_KEY, "includeTimeline": True})
