@@ -26,18 +26,18 @@ def load_data():
 
 def download_match(region, id):
     print(region, id)
-    with open('matches/{id}.json'.format(id=id), 'w') as outfile:
+    with open('../datasets/matches/{id}.json'.format(id=id), 'w') as outfile:
         match = get_match(region, id)
         while match.status_code != 200:
             print(match)
             print("retrying...")
             match = get_match(region, id)
-        outfile.write(match.text)
+        outfile.write(match.text.encode('utf-8'))
 
 def download_all():
     matches = load_data()
     for region, id in matches:
-        if not os.path.exists('matches/{id}.json'.format(id=id)):
+        if not os.path.exists('../datasets/matches/{id}.json'.format(id=id)):
             download_match(region, id)
 
 download_all()
