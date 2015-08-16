@@ -12,7 +12,7 @@ couch = couchdb.Server() # Assuming localhost:5984
 db = couch['league']
 
 
-path = '../datasets/pretty/*.json'
+path = '../datasets/static/*.json'
 #dirPath = 'C:/Users/VijayKumar/Desktop/CouchDB_Python'   
 files = glob.glob(path)
 for file1 in files: 
