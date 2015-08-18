@@ -4,3 +4,7 @@ from .forms import LoginForm
 from werkzeug.local import LocalProxy
 import simplejson
 couch = LocalProxy(lambda: g.couch)
+
+def getChampName(int id):
+	document
+	return name
