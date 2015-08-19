@@ -1,3 +1,5 @@
+datasets/*
+WebApp/flask/*
 TAGS
 *.pyc
 venv

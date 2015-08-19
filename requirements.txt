@@ -6,3 +6,5 @@ ratelim
 jupyter
 luigi
 matplotlib
+couchdb
+simplejson
