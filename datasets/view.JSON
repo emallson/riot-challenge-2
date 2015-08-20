@@ -1,0 +1,10 @@
+{
+  "_id": "_design/app",
+  "_rev": "1",
+  "views": {
+            "printData":
+              {
+                "map": "function(doc){emit(doc._id,doc.data);}"
+              }
+            }
+}
