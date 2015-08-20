@@ -1,7 +1,0 @@
-numpy
-scipy
-scikit-learn
-requests
-ratelim
-couchdb
-simplejson
