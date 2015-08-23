@@ -18,10 +18,9 @@ def getChampInfo(champID):
 @app.route('/index')
 def index():
 	user = {'nickname': 'Impally'}  # fake user
-	return render_template('index.html', 
-							title='Home',
-							user=user)
+	return render_template('index.html')
 
-@app.route('/view_profile')
-def view_profile():
-	return getChampInfo('Zac')
+@app.route('/Champions')
+def Champions():
+	champion_list_view = ViewDefinition('app', 'dataList', "function(doc) { Object.keys(doc.data).forEach(function(k) { emit(k, doc.data[k]); }); }")
+	manager.add_viewdef(champion_list_view)
