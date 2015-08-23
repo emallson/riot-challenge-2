@@ -1,18 +1,18 @@
 from flask import render_template, flash, redirect, g, request
 from app import app
+import couchdb
+from flaskext.couchdb import CouchDBManager, ViewDefinition
 from werkzeug.local import LocalProxy
 couch = LocalProxy(lambda: g.couch)
 
-def getChampName(champID):
-	champion_name_view = ViewDefinition('champions', 'champName', '''\
-              function(doc) 
-                      { 
-                        Object.keys(doc).forEach(function(k) 
-                          { emit(k, doc[k].name); }); }"
-		''')
+manager = CouchDBManager()
+
+def getChampInfo(champID):
+	champion_name_view = ViewDefinition('app', 'champName', "function(doc) { Object.keys(doc.data).forEach(function(k) { emit(k, doc.data[k].image); }); }")
 	manager.add_viewdef(champion_name_view)
-	champKeys = champion_name_view()
-	return champKeys[1]
+	champKeys = champion_name_view[champID]
+	
+	for champ in champKeys: return(champ.key)
 
 @app.route('/')
 @app.route('/index')
@@ -24,5 +24,4 @@ def index():
 
 @app.route('/view_profile')
 def view_profile():
-	document = couch.get("25023dc39a5f00c52fb91eb35b000e91")
-	return getChampName(1)
+	return getChampInfo('Zac')

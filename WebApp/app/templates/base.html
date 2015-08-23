@@ -1,7 +1,9 @@
 <html>
 	<head>
+		
     	<link href="https://bootswatch.com/superhero/bootstrap.min.css" rel="stylesheet">
-    	<script type="text/javascript" src="http://static.wowhead.com/widgets/power.js"></script><script>var wowhead_tooltips = { "colorlinks": true, "iconizelinks":false, "renamelinks": true }</script>
+    	<link href="{{ url_for('static', filename='main.css') }}" rel="stylesheet">
+    	
 		{% if title %}
 		<title>{{ title }} - main page</title>
 		{% else %}
@@ -9,8 +11,10 @@
 		{% endif %}
 	</head>
 	<body>
-		<div>Mainpage: <a href="/index">Home</a></div>
+		{% include 'navbar.html' %}
+		<div class="main">
 		<hr>
 		{% block content %}{% endblock %}
+		</div>
 	</body>
 </html>
