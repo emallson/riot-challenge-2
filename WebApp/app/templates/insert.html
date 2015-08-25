@@ -1,3 +1,9 @@
 {% extends "list.html" %}
 {% block content %}
-{% endblock %}
+{% for champ in champions %}
+<div class = "pic" style="background-image:url(http://ddragon.leagueoflegends.com/cdn/5.2.1/img/champion/{{ champ.image.full }}">
+	<a href="/{{ champ.name }}">
+
+	</a>
+</div>
+{% endblock %}	
