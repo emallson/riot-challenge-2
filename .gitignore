@@ -1,4 +1,6 @@
 datasets/*
+!datasets/ap
+!datasets/brawl
 WebApp/flask/*
 TAGS
 *.pyc
