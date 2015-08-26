@@ -1,9 +1,13 @@
 {% extends "list.html" %}
-{% block content %}
+{% block champlist %}
 {% for champ in champions %}
-<div class = "pic" style="background-image:url(http://ddragon.leagueoflegends.com/cdn/5.2.1/img/champion/{{ champ.image.full }}">
-	<a href="/{{ champ.name }}">
-
+<li class="champ">
+	<a href="http://leagueoflegends.wikia.com/wiki/{{ champ.value.name }}">
+		<figure>
+		<img src="http://ddragon.leagueoflegends.com/cdn/5.2.1/img/champion/{{ champ.value.image.full }}" width="80" height="80" alt="{{ champ.value.name }}">
+		<figcaption> {{ champ.value.name }}</figcaption>
+		</figure>
 	</a>
-</div>
+</li>
+{% endfor %}
 {% endblock %}	

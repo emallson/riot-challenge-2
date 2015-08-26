@@ -6,13 +6,9 @@ from werkzeug.local import LocalProxy
 couch = LocalProxy(lambda: g.couch)
 
 manager = CouchDBManager()
+list_view = ViewDefinition('app', 'dataList', "function(doc) { Object.keys(doc.data).forEach(function(k) { emit(k, doc.data[k]); }); }")
+manager.add_viewdef(list_view)
 
-def getChampInfo(champID):
-	champion_name_view = ViewDefinition('app', 'champName', "function(doc) { Object.keys(doc.data).forEach(function(k) { emit(k, doc.data[k].image); }); }")
-	manager.add_viewdef(champion_name_view)
-	champKeys = champion_name_view[champID]
-	
-	for champ in champKeys: return(champ.key)
 
 @app.route('/')
 @app.route('/index')
@@ -21,9 +17,14 @@ def index():
 
 @app.route('/Champions')
 def Champions():
-	champion_list_view = ViewDefinition('app', 'dataList', "function(doc) { Object.keys(doc.data).forEach(function(k) { emit(k, doc.data[k]); }); }")
-	manager.add_viewdef(champion_list_view)
-	champList = champion_list_view["a":"Z"]
+	champList = list_view["a":"Z"]
 	champions = champList[:]
 	return render_template('insert.html', 
 							champions=champions)
+
+#Cool idea, just decided to link our lists to the LoL Wiki page however.
+# @app.route('/Champion/<string:champ_name>')
+# def champ(champ_name):
+# 	champions = list_view[champ_name]
+# 	for champion in champions:
+# 		return render_template('character.html', champion=champion)

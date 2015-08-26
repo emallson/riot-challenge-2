@@ -16,3 +16,100 @@ nav.navbar.navbar-default{
 	padding-bottom: 0px;
 	min-height: 0px;
 }
+
+div.pic{
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 80px;
+	width: 80px;
+	float: left;
+	display: inline-block;
+	margin: 1%;
+	vertical-align: bottom;
+}
+
+div.pic.container{
+	float: left;
+	display: inline-block;
+	width: 50%;
+	margin: 3% 25%;
+	height: auto;
+}
+
+a.champ{
+	float: left;
+}
+
+
+ul.champList{
+	position: relative;
+	overflow: hidden;
+	list-style-type:none;
+	float: left;
+}
+
+li.champ{
+	float: left;
+	margin: 1%;
+}
+figcaption{
+    border-radius: 12px;
+    background: #0A0E15;
+    border: 1px solid black;
+    font-weight: 700;
+    font-size: 9px;
+    line-height: 16px;
+    display: block;
+    margin: 6px 0 0;
+    padding: 0 9.75px;
+    text-align: center;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+    overflow: hidden;
+	white-space: nowrap;
+	color: #dcdccc;
+}
+a:hover{
+	text-decoration: none;
+}
+li.champ:hover figcaption{
+	color: #0A0E15;
+	background: #dcdccc;
+}
+
+div.character-page{
+	margin: 1.2%;
+}
+div.header{
+	position: relative;
+	margin-left:33%;
+	margin-right: 33%;
+	background-size: cover;
+	background-repeat: no-repeat;
+	font-size: 20;
+	height: 35%;
+	width: 35%;
+}
+
+div.title{
+	background:rgba(0,0,0,0.4);
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	font-size:28px;
+	color: #dcdccc;
+	margin:0;
+	font-weight: bold;
+	text-transform: capitalize;
+}
+
+div.title h1{
+	background: linear-gradient(to bottom,#ffce5c 0,#bb8d1d 60%,#6c5419 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 56px;
+    text-transform: uppercase;
+    font-family: "Crimson Text",sans-serif;
+    color: #f1b629;
+    font-weight: bold;
+    margin:0;
+}
